@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exception Handler</h1>
+    <hr>
+    <h3>@ExceptionHandler 어노테이션 사용</h3>
+    <button onclick="location.href='nullpointer'">NullPinter 발생시 예외 처리</button>
+    <button onclick="location.href='userexception'">사용자 정의의 Exception</button>
+    <hr>
+    <h3> @ControllerAdvice 어노테이션 사용으로 전역 예외처리</h3>
+    <button onclick="location.href='global-nullpointer'">전역 Null Pinter 발생시 예외 처리</button>
+    <button onclick="location.href='global-userexception'">전역 사용자 정의 예외처리</button>
+    <button onclick="location.href='global-default'">default 예외처리</button>
+
+</body>
+</html>
