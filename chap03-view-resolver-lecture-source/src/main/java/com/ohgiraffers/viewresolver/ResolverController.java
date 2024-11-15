@@ -25,7 +25,7 @@ public class ResolverController {
     public String stringReturn(Model model){
 
         model.addAttribute("forwardMessage"
-                            ,"문자열로 view 반환" );
+                            ,"문자열로 view 반환하기!" );
 
         return "result";
     }
@@ -43,7 +43,7 @@ public class ResolverController {
     public String redirectAttr(RedirectAttributes attr){
 
         attr.addFlashAttribute("flashMessage",
-                                "리다이랙트 시 값 유지!");     // 잠깐 넣다가 뺀다.(소멸식)
+                                "리다이랙트 시 값 유지!!!");     // 잠깐 넣다가 뺀다.(소멸식)
 
         return "redirect:/";
 
@@ -54,7 +54,7 @@ public class ResolverController {
     private ModelAndView modelAndView(ModelAndView mv){
 
         mv.addObject("forwardMessage",
-                        "ModelAmdView 를 이용해서 반환");
+                        "ModelAmdView 를 이용해서 반환!!!");
         //문자열로 이동하고 싶은 view 페이지를 지정할수 있다.
         mv.setViewName("result");
 
