@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <h1>Interceptor 를 이용하여 Controller 의 요청 가로채기</h1>
+
+        <pre>
+            인터셉트란> 스프링 프레임워크에서 제공하는 기능중 하나로서
+            클라이언트가 보내는 요청을 가로채서 처리하는 역활을 수행한다.
+            이는 Servlet 에서 배웠던 Filter 와 매우 흡사하지만
+            가장 큰차이점은 필터는 서블릿이 인터쳅터 는 스프링 의 기술이란것이다.
+            따라서 IoC 컨테이너에 등록되어 있는 빈 을 참조할수 있다는 것이 가장 큰 특징이다.
+        </pre>
+        <h3>핸들러 인터셉터를 이용한 요청처리 시간 확인.</h3>
+        <button onclick="location.href='stopwatch'">수행시간 버튼</button>
+
+</body>
+</html>
