@@ -1,0 +1,15 @@
+server:
+  port: 7777
+  #spring -mysql driver config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/menudb
+    username: ohgiraffers
+    password: ohgiraffers
+
+#마이바티스 mapper.xml 파일을 IoC 컨테이너가 인식할 수 있게 위츠 정보 설정
+mybatis:
+  # mappers/*.xml : mappers 디렉토리 내부의 확장자가 .xml 로 끝나는 파일 인식
+  # mappers/**/*.xml : mappers 디렉토리 포함 호든 하위 디렉토리에서 .xml 로 끝나는 파일 인식.
+  mapper-locations: mappers/**/*.xml
