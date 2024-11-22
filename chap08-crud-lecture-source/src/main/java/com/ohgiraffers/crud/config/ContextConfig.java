@@ -14,12 +14,14 @@ import java.util.Locale;
 @MapperScan(basePackages = "com.ohgiraffers.crud",annotationClass = Mapper.class)  // MyBatis 맵퍼 인스턴스 스캔
 public class ContextConfig {
 
-    @Bean
+    @Bean// 스프링 켄테이너에 의해 관리되는 빈을 생성
     public ReloadableResourceBundleMessageSource messageSource(){
         /*message.properties 파일을 자바 객체 형식으로
         * 읽어들일 수 있게 만든다.*/
 
+        //스프링 애플리케이션에서 국제화 된 메세지를 관리하기 위해 사용
         ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
+
         // classpath:->src/main/resource , src/main/java 를 의미한다.
         source.setBasename("classpath:/messages/message");
         source.setDefaultEncoding("UTF-8");
