@@ -15,22 +15,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 import java.util.Locale;
 
-@Controller
-@RequestMapping("/menu/*")
+@Controller// 요청을 처리하는 클래스
+@RequestMapping("/menu/*") // /menu/* 시작하는 URL 을 처리.
 public class MenuController {
 
-    /*comment
-    * Logging : 우리가 들어온 흔적을 남기는것
-    * 애플리케이션이 실행 중 발생 하는 이벤트 ( 정보 , 경고 , 오류) 등을
-    * 기록하는 과정.  이는 사용자가 화면을 위해 만드는 기능이 아닌, 개발자가 어플리캐이션의
-    * 상태를 추척하고, 모니터링 하는데 사용할 수 있다.
-    *  */
+    //* Logging : 우리가 들어온 흔적을 남기는것 -개발자를 위한
+    // * 애플리케이션이 실행 중 발생 하는 이벤트 ( 정보 , 경고 , 오류) 등을 기록하는 과정.
     private static final Logger logger = LogManager.getLogger(MenuController.class);
 
-private final MenuService menuService;
-private final MessageSource messageSource;
+    private final MenuService menuService;
+    private final MessageSource messageSource;
 
-    @Autowired
+    @Autowired // 의존성 주입을 담당 ( 필요하다면 빌려는 드릴께 말만해)
     public MenuController(MenuService menuService , MessageSource messageSource){
         this.menuService=menuService;
         this.messageSource = messageSource;
@@ -38,7 +34,7 @@ private final MessageSource messageSource;
 
 
     @GetMapping("list")
-    public String findMenuList(Model model){
+    public String findMenuList(Model model){ // Model 객체는 데이터를 뷰로 전달하는 역활
 
         List<MenuDTO> menuList= menuService.findAllMenus();
         for(MenuDTO menu : menuList){
@@ -52,9 +48,6 @@ private final MessageSource messageSource;
 
     @GetMapping("regist")
     public void registPage(){}
-
-
-
 
 
     @GetMapping(value = "category",produces = "application/json; charset=UTF-8") // json -> 자바스크립트 객체 표기법을 의미한다.
