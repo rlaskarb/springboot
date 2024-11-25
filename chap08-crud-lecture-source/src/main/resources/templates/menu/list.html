@@ -20,7 +20,7 @@
     </tr>
     <tr th:each="menu : ${menuList}">
         <td th:text="${menu.code}"></td>
-        <td th:text="${menu.name}"></td>
+        <td><a th:href="@{/menu/detail/{code}(code= ${menu.code})}" th:text="${menu.name}"></a> </td>
         <td th:text="${menu.price}"></td>
         <td th:text="${menu.categoryCode}"></td>
         <td th:text="${menu.orderableStatus}"></td>
