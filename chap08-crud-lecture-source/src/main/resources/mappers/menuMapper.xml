@@ -103,6 +103,18 @@
                 menu_code = #{code}
     </delete>
 
-
+    <!--메뉴코드를 통해 메뉴 상세 정보를 조회회는 SQL 쿼리-->
+    <select id="findMenuByCode" parameterType="int" resultMap="menuResultMap">
+        SELECT
+            MENU_CODE,
+            MENU_NAME,
+            MENU_PRICE,
+            CATEGORY_CODE,
+            ORDERABLE_STATUS
+        FROM
+            TBL_MENU
+        WHERE
+            MENU_CODE = #{code}
+    </select>
 
 </mapper>

@@ -20,4 +20,5 @@ public interface MenuMapper {
     void deleteMenu(int code);
 
 
+    MenuDTO findMenuByCode(int code);
 }

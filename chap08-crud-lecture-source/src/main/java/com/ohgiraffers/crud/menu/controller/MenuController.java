@@ -63,13 +63,6 @@ public class MenuController {
         /*@ModelAttribute : form 태그로 묶어서 넘오는 값을 클래스 자료형에 담기 위해 작성하는 어노테이션
         * RedirectAttributes : 리다이렉트 시 저장할 값이 있으면 사용하는 객체*/
 
-        /*comment
-        * TRACE: 상세한 디버깅 정보
-        * DEBUG: 개발중 디버깅용 정보
-        * INFO: 일반적인 실행정보
-        * WARN: 잠재적인 문제경고
-        * ERROR: 실행중 발생한 오류
-        * */
 
         logger.info("Locale : {}",locale); //
         logger.info("newMenu : {}",newMenu);
@@ -107,6 +100,14 @@ public class MenuController {
         rttr.addFlashAttribute("successMessage" ,
                 messageSource.getMessage("delete", new Object[]{code},locale));
         return "redirect:/menu/list";
+    }
+
+
+    @GetMapping("detail/{code}") // 이경로 들어오는 GET 요청을 처리
+    public String getMenuDetail(@PathVariable int code , Model model){ //@PathVariable -> URL 경로에서 code 값을 받아옵니다.
+        MenuDTO menu = menuService.findMenuByCode(code);
+        model.addAttribute("menu",menu); // 조회된 메뉴 정보를 모델에 추가하여 뷰에 전달
+        return "menu/detail"; // menu/detail 뷰를 반환
     }
 
 }

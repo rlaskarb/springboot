@@ -9,11 +9,12 @@
 </head>
 <body>
     <h3> 신규 메뉴 등록 폼 </h3>
-    <form action="/menu/regist" method="post">
-        <label>메뉴이름 : <input type="text" name="name"></label> <br>
+    <form action="/menu/regist" method="post"> //form 이 제출될때 데이터를 전송할 URL을 지정
+        <label>메뉴이름 : <input type="text" name="name"></label> <br> // 서버로 전송될때 name 으로 데이터 식별
         <label>메뉴가격 : <input type="number" name="price" step="1000" min="0"></label> <br>
         <label>카테고리 코드 : </label>
-        <select name="categoryCode" id="categoryCode"></select><br>
+        <select name="categoryCode" id="categoryCode">
+        </select><br>
         <label>판매상태 : </label>
         <select name="orderableStatus">
             <option value="Y">Y</option>
@@ -22,23 +23,13 @@
         <input type="submit" value="전송">
     </form>
     <script>
-        /*
-        *비동기 처리화면이 로딩될 때 미리 데이터를 불러와 화면에 뿌려준다.
-
-        * *fetch(강제로 잡아채다)
-        * fetch 는 regist.html 페이지가 요청되는 순간 동작을 한다.
-        * 즉,우리가 물리적인 버튼을 누르거나, 페이지 이동 등의 작업을 하지 않더라도 요청을 보낸다는 의미이다.
-        * /menu/category 요청이 끝나면 돌아오는 값은
-        * json 형식의 문자열 데이터 이다. ex){code: 3 , name : 한식}
-        * 따라서 자바스크립트는 객체로서 쓰기 위해서는 문자열 데이터를 객체 형태로 변환을 해줘야 한다.*/
-
-        fetch("/menu/category")
-            //
+        fetch("/menu/category") // menu/category 경로에서 카테고리 데이터를 가져와서 드롭다운메뉴에 옵션을 추가하는 기능
             .then(res => res.json()) // 자바스크립트 사용할 수 있게 변환
             .then(data =>{
                 console.log(data);
-                //select 태그에서 가져옴
-                const $categoryCode = document.getElementById("categoryCode");
+
+                const $categoryCode = document.getElementById("categoryCode"); // id가 categoryCode 인 HTML 요소를 선택 이요소는 드롭다운메뉴
+
                 //for in 반복문: 변수에 data 에 있는 프로퍼티 키 타입
                 for(let index in data){
                     const $option = document.createElement("option");
@@ -51,3 +42,16 @@
 
 </body>
 </html>
+
+// 드롭다운 은 사용자가 여러 옵션중 하나를 선택할 수 있도록 하는 인테 페이스 요소를 의미한다.
+// 주로 select 태그와 함께 사용이 되며 옵션을들 option 태그로 지정하여 구현.
+
+
+/* 비동기 처리화면이 로딩될 때 미리 데이터를 불러와 화면에 뿌려준다.*/
+
+/* *fetch(강제로 잡아채다)
+* fetch 는 regist.html 페이지가 요청되는 순간 동작을 한다.
+* 즉,우리가 물리적인 버튼을 누르거나, 페이지 이동 등의 작업을 하지 않더라도 요청을 보낸다는 의미이다.
+* /menu/category 요청이 끝나면 돌아오는 값은
+* json 형식의 문자열 데이터 이다. ex){code: 3 , name : 한식}
+* 따라서 자바스크립트는 객체로서 쓰기 위해서는 문자열 데이터를 객체 형태로 변환을 해줘야 한다.*/
