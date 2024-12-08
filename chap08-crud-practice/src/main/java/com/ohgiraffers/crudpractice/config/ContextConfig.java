@@ -14,7 +14,7 @@ import java.util.Locale;
 @MapperScan(basePackages = "com.ohgiraffers.crudpractice" , annotationClass = Mapper.class) //ps MyBatis / 지정된 모든 Mapper 를 사용할수 있다.
 public class ContextConfig {
 
-    @Bean//  bean
+    @Bean
     public ReloadableResourceBundleMessageSource messageSource(){
 
         ReloadableResourceBundleMessageSource source =
